@@ -1,38 +1,126 @@
+:root {
+  --color-primary:    #495E57;
+  --color-highlight:  #F4CE14;
+  --color-secondary-1:#EE9972;
+  --color-secondary-2:#FBDABB;
+  --color-off-white:  #EDEFEE;
+  --color-off-black:  #333333;
+  --size-max-width: 900px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  background: var(--color-off-white);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header .logo {
+  padding: 8px 16px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header nav {
+  max-width: var(--size-max-width);
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 24px;
+}
+header ul {
+  display: flex;
+  list-style: none;
+  gap: 1em;
+}
+header ul a {
+  padding: 8px 16px;
+  display: block;
+}
+main {
+  display: flex;
+  flex-flow: column;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-content {
+  max-width: var(--size-max-width);
+  margin: auto;
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.hero .grid-content{
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  grid-template-areas: "headline imagery"
+                       "subhead imagery"
+                       "body imagery"
+                       "cta imagery";
+}
+.hero h1 {
+  grid-area: headline;
+}
+.hero h2 {
+  grid-area: subhead;
+}
+.hero p {
+  grid-area: body;
+}
+.hero .cta {
+  grid-area: cta;
+}
+.hero .imagery {
+  grid-area: imagery;
+}
+.highlights .grid-content{
+  max-width: var(--size-max-width);
+  margin: auto;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "heading button"
+                       "specials specials";
+}
+.highlights h2 {
+  grid-area: heading;
+}
+.highlights a {
+  grid-area: button
+}
+.highlights ul {
+  display: flex;
+  grid-area: specials;
+  list-style: none;
+  justify-content: center;
+  gap: 48px;
+  width: 100%;
+}
+.highlights li {
+  background-color: var(--color-off-white);
+  padding: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.testimonials {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-primary);
+}
+
+.testimonials ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 48px;
+}
+footer {
+  background-color: var(--color-off-white);
+}
+footer .content {
+  display: flex;
+  max-width: var(--size-max-width);
+  margin: auto;
+  justify-content: space-evenly;
+}
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
 }
