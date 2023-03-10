@@ -2,8 +2,8 @@ const Header = () => {
   return (
     <header>
         <nav>
-          <a href="/">
-            <img alt="Little Lemon" src="" />
+          <a href="/" className="logo">
+            <img alt="Little Lemon" src="/img/little-lemon.svg" />
           </a>
           <ul>
             <li>

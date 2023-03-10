@@ -1,6 +1,7 @@
 const Footer = () => {
   return (
     <footer>
+      <div className="content">
         <img alt="Little Lemon Chicago" src="" />
         <nav>
           <section>
@@ -55,7 +56,8 @@ const Footer = () => {
             </ul>
           </section>
         </nav>
-      </footer>
+      </div>
+    </footer>
   )
 }
 
