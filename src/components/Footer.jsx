@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="content">
-        <img alt="Little Lemon Chicago" src="" />
+        <img alt="Little Lemon Chicago" src="http://via.placeholder.com/100x125" />
         <nav>
           <section>
             <h2>Doormat Navigation</h2>
@@ -28,30 +28,30 @@ const Footer = () => {
             </ul>
           </section>
           <section>
-            <h2>Doormat Navigation</h2>
+            <h2>Contact</h2>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <span>Address</span>
               </li>
               <li>
-                <a href="/about">About</a>
+                <a href="tel:555-555-5555">Phone Number</a>
               </li>
               <li>
-                <a href="/menu">Menu</a>
+                <a href="mailto:noreply@example.com">Email</a>
               </li>
             </ul>
           </section>
           <section>
-            <h2>Doormat Navigation</h2>
+            <h2>Social Media Links</h2>
             <ul>
-            <li>
-                <a href="/">Home</a>
+              <li>
+                <a href="/">Facebook</a>
               </li>
               <li>
-                <a href="/about">About</a>
+                <a href="/">Instagram</a>
               </li>
               <li>
-                <a href="/menu">Menu</a>
+                <a href="/">Secret third thing</a>
               </li>
             </ul>
           </section>
