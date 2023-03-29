@@ -33,7 +33,11 @@ header ul {
 }
 header ul a {
   padding: 8px 16px;
+  font-size: .9rem;
   display: block;
+  color: var(--color-off-black);
+  text-transform: uppercase;
+  text-decoration: none;
 }
 main {
   display: flex;
@@ -70,6 +74,10 @@ main {
   grid-area: headline;
   font-size: clamp(1.5rem, 3rem, 8vw);
   margin-bottom: 0;
+  margin-top: 0;
+}
+.hero h1 {
+  color: var(--color-highlight);
 }
 .hero h2, .about h3 {
   grid-area: subhead;
@@ -100,11 +108,13 @@ main {
 }
 .highlights ul {
   display: flex;
+  flex-wrap: wrap;
   grid-area: specials;
   list-style: none;
   justify-content: center;
-  gap: 48px;
+  gap: 24px;
   width: 100%;
+  padding-left: 0;
 }
 .highlights li {
   background-color: var(--color-off-white);
@@ -113,7 +123,7 @@ main {
 .card *:not(img) {
   padding: 4px 16px;
 }
-.card, .card img {
+.card, .card img, .highlights li {
   border-radius: 16px 16px 0 0;
 }
 .card {
@@ -152,11 +162,13 @@ main {
   display: grid;
   place-items: center;
   background-color: var(--color-primary);
+  padding: 5vw 0;
 }
 
 .testimonials ul {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   list-style: none;
   gap: 48px;
 }
