@@ -1,28 +1,30 @@
+import { Link } from "react-router-dom"
+
 const Header = () => {
   return (
     <header>
         <nav>
-          <a href="/" className="logo">
+          <Link to="/" className="logo">
             <img alt="Little Lemon" src="/img/little-lemon.svg" />
-          </a>
+          </Link>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="/menu">Menu</a>
+              <Link to="/menu">Menu</Link>
             </li>
             <li>
-              <a href="/reservations">Reservations</a>
+              <Link to="/reserve-table">Reservations</Link>
             </li>
             <li>
-              <a href="/order">Order Online</a>
+              <Link to="/order">Order Online</Link>
             </li>
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>
