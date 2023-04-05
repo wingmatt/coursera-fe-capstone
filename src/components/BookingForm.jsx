@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookinghtmlForm = () => {
+const BookingForm = () => {
   const [form, setForm] = useState({
     resDate: undefined,
     resTime: undefined,
@@ -60,3 +60,5 @@ const BookinghtmlForm = () => {
     </form>
   );
 };
+
+export default BookingForm;
