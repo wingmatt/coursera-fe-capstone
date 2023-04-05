@@ -2,11 +2,21 @@ import { useState } from "react";
 
 const BookingForm = () => {
   const [form, setForm] = useState({
-    resDate: undefined,
-    resTime: undefined,
-    guests: undefined,
-    occasion: undefined,
+    data: {
+      resDate: undefined,
+      resTime: undefined,
+      guests: undefined,
+      occasion: undefined,
+    },
   });
+  const [availableTimes, setAvailableTimes] = useState([
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+  ]);
   const handleChange = (event) => {
     setForm((prevState) => ({
       data: {
@@ -30,12 +40,9 @@ const BookingForm = () => {
         value={form.data.resTime}
         onChange={(event) => handleChange(event)}
       >
-        <option>17:00</option>
-        <option>18:00</option>
-        <option>19:00</option>
-        <option>20:00</option>
-        <option>21:00</option>
-        <option>22:00</option>
+        {availableTimes.map((time) => (
+          <option>{time}</option>
+        ))}
       </select>
       <label htmlFor="guests">Number of guests</label>
       <input
