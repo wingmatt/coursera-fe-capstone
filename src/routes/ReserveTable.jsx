@@ -1,5 +1,4 @@
-import Card from "../components/Card";
-import Testimonial from "../components/Testimonial";
+import BookingForm from "../components/BookingForm"
 
 const ReserveTable = () => {
   return (
@@ -13,32 +12,7 @@ const ReserveTable = () => {
             <img  className="imagery" alt="Little Lemon Chicago" src="http://via.placeholder.com/300x200" />
           </div>
         </section>
-        <section className="highlights">
-          <div className="grid-content">
-            <h2>Reserve a Table</h2>
-            <a href="/order-online" className="button cta">
-              Order Online
-            </a>
-            <ul>
-              <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
-              </li>
-              <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
-              </li>
-              <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section className="testimonials">
-          <ul>
-            <li><Testimonial name="Ralph" imgUrl="http://via.placeholder.com/75x75" rating="5/5" quotation="Great place, great food... great FUN!"/></li>
-            <li><Testimonial name="Ralph" imgUrl="http://via.placeholder.com/75x75" rating="5/5" quotation="Great place, great food... great FUN!"/></li>
-            <li><Testimonial name="Ralph" imgUrl="http://via.placeholder.com/75x75" rating="5/5" quotation="Great place, great food... great FUN!"/></li>
-          </ul>
-        </section>
+        <BookingForm />
         <section className="about">
           <div className="grid-content">
             <h2>Little Lemon</h2>
