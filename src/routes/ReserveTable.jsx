@@ -12,7 +12,10 @@ const ReserveTable = ({availableTimes, setAvailableTimes}) => {
             <img  className="imagery" alt="Little Lemon Chicago" src="http://via.placeholder.com/300x200" />
           </div>
         </section>
-        <BookingForm availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />
+        <section className="reserve-table">
+          <h2>Reserve a Table</h2>
+          <BookingForm availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />
+        </section>
         <section className="about">
           <div className="grid-content">
             <h2>Little Lemon</h2>
