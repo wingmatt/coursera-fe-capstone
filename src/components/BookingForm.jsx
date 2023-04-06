@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = () => {
+const BookingForm = ({availableTimes, setAvailableTimes}) => {
   const [form, setForm] = useState({
     data: {
       resDate: undefined,
@@ -9,14 +9,6 @@ const BookingForm = () => {
       occasion: undefined,
     },
   });
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
   const handleChange = (event) => {
     setForm((prevState) => ({
       data: {

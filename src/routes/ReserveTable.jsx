@@ -1,6 +1,6 @@
 import BookingForm from "../components/BookingForm"
 
-const ReserveTable = () => {
+const ReserveTable = ({availableTimes, setAvailableTimes}) => {
   return (
     <>
       <section className="hero bg-primary">
@@ -12,7 +12,7 @@ const ReserveTable = () => {
             <img  className="imagery" alt="Little Lemon Chicago" src="http://via.placeholder.com/300x200" />
           </div>
         </section>
-        <BookingForm />
+        <BookingForm availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />
         <section className="about">
           <div className="grid-content">
             <h2>Little Lemon</h2>
