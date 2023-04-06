@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = ({availableTimes, setAvailableTimes}) => {
+const BookingForm = ({availableTimes, dispatch}) => {
   const [form, setForm] = useState({
     data: {
       resDate: undefined,
@@ -16,7 +16,11 @@ const BookingForm = ({availableTimes, setAvailableTimes}) => {
         [event.target.name]: event.target.value,
       },
     }));
+    if (event.target.name === "res-date") updateAvailableTimes(event.target.value);
   };
+  const updateAvailableTimes = (newDate) => {
+    dispatch({type: "UPDATE_TIMES", payload: newDate})
+  }
   return (
     <form className="booking">
       <label htmlFor="res-date">Choose date</label>
@@ -33,7 +37,7 @@ const BookingForm = ({availableTimes, setAvailableTimes}) => {
         onChange={(event) => handleChange(event)}
       >
         {availableTimes.map((time) => (
-          <option>{time}</option>
+          <option key={time}>{time}</option>
         ))}
       </select>
       <label htmlFor="guests">Number of guests</label>

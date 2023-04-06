@@ -1,35 +1,35 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useReducer } from "react";
 import Home from "../routes/Home";
 import ReserveTable from "../routes/ReserveTable";
 
-
+const initializeTimes = () => {
+  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+};
+const updateTimes = (action) => {
+  if (action.type === "UPDATE_TIMES") {
+    switch (action.payload) {
+      default:
+        return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+    }
+  }
+};
 
 const Main = () => {
-  const [availableTimes, setAvailableTimes] = useState([]);
-  useEffect(() => updateTimes(), [])
-  const updateTimes = (selectedDate) => {
-    let updatedTimes;
-    switch(selectedDate) {
-      default:
-        updatedTimes =
-        [
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00",
-        ];
-        break;
-    }
-    setAvailableTimes(updatedTimes)
-  }
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home/>} ></Route>
-        <Route path="/reserve-table" element={<ReserveTable availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />} ></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/reserve-table"
+          element={
+            <ReserveTable
+              availableTimes={availableTimes}
+              dispatch={dispatch}
+            />
+          }
+        ></Route>
       </Routes>
     </main>
   );

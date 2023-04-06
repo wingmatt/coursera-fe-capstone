@@ -1,6 +1,6 @@
 import BookingForm from "../components/BookingForm"
 
-const ReserveTable = ({availableTimes, setAvailableTimes}) => {
+const ReserveTable = ({availableTimes, dispatch}) => {
   return (
     <>
       <section className="hero bg-primary">
@@ -14,7 +14,7 @@ const ReserveTable = ({availableTimes, setAvailableTimes}) => {
         </section>
         <section className="reserve-table">
           <h2>Reserve a Table</h2>
-          <BookingForm availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />
+          <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
         </section>
         <section className="about">
           <div className="grid-content">
