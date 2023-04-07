@@ -36,3 +36,5 @@ const Main = () => {
 };
 
 export default Main;
+
+export {initializeTimes, updateTimes};
