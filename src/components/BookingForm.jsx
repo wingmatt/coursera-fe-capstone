@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const BookingForm = ({availableTimes, dispatch}) => {
+
+const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   const [form, setForm] = useState({
     data: {
       resDate: undefined,
@@ -22,7 +23,7 @@ const BookingForm = ({availableTimes, dispatch}) => {
     dispatch({type: "UPDATE_TIMES", payload: newDate})
   }
   return (
-    <form className="booking">
+    <form className="booking" onSubmit={(event) => onSubmit(event, form.data)} aria-label="Make a reservation">
       <h2>Reserve a Table</h2>
       <label htmlFor="res-date">Choose date</label>
       <input
@@ -66,3 +67,5 @@ const BookingForm = ({availableTimes, dispatch}) => {
 };
 
 export default BookingForm;
+
+//export {handleSubmit};

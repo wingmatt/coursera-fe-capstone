@@ -1,5 +1,10 @@
 import BookingForm from "../components/BookingForm"
 
+const handleSubmit = (event, data) => {
+  event.preventDefault();
+  console.log("Form submitted:", data);
+}
+
 const ReserveTable = ({availableTimes, dispatch}) => {
   return (
     <>
@@ -13,7 +18,7 @@ const ReserveTable = ({availableTimes, dispatch}) => {
           </div>
         </section>
         <section className="reserve-table">
-          <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+          <BookingForm availableTimes={availableTimes} dispatch={dispatch} onSubmit={handleSubmit} />
         </section>
         <section className="about">
           <div className="grid-content">
