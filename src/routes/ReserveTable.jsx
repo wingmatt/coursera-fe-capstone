@@ -13,7 +13,6 @@ const ReserveTable = ({availableTimes, dispatch}) => {
           </div>
         </section>
         <section className="reserve-table">
-          <h2>Reserve a Table</h2>
           <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
         </section>
         <section className="about">

@@ -23,6 +23,7 @@ const BookingForm = ({availableTimes, dispatch}) => {
   }
   return (
     <form className="booking">
+      <h2>Reserve a Table</h2>
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -36,7 +37,7 @@ const BookingForm = ({availableTimes, dispatch}) => {
         value={form.data.resTime}
         onChange={(event) => handleChange(event)}
       >
-        {availableTimes.map((time) => (
+        {availableTimes?.map((time) => (
           <option key={time}>{time}</option>
         ))}
       </select>
