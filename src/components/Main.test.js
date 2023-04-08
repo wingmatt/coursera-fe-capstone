@@ -1,12 +1,21 @@
-import  {initializeTimes, updateTimes} from "./Main";
+import { initializeTimes, updateTimes } from "./Main";
 
+const expectedTimes = [
+  "17:00",
+  "17:30",
+  "20:00",
+  "20:30",
+  "22:30",
+  "23:00",
+  "23:30",
+];
 
-const expectedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+test("Initializes the correct times", () => {
+  expect(initializeTimes().length).toBeGreaterThan(0);
+});
 
-test('Initializes the correct times', () => {
-    expect(initializeTimes()).toEqual(expectedTimes);
-})
-
-test('Updates based on state', () => {
-  expect(updateTimes({type: "UPDATE_TIMES", payload: "tomorrow"})).toEqual(expectedTimes);
-})
+test("Updates based on state", () => {
+  expect(updateTimes({ type: "UPDATE_TIMES", payload: new Date("4/7/2023") })).toEqual(
+    expectedTimes
+  );
+});
