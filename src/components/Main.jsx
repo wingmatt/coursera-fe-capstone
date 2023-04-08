@@ -1,22 +1,32 @@
 import { Route, Routes } from "react-router-dom";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import Home from "../routes/Home";
 import ReserveTable from "../routes/ReserveTable";
+import { fetchAPI } from "../api/api";
 
-const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+const initializeTimes = async () => {
+  const newTimes = await fetchAPI(new Date());
+  return newTimes;
 };
-const updateTimes = (action) => {
+const updateTimes = async (state, action) => {
   if (action.type === "UPDATE_TIMES") {
-    switch (action.payload) {
-      default:
-        return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-    }
+    const newTimes = await fetchAPI(action.payload);
+    console.log(newTimes)
+    return {
+      ...state,
+      availableTimes: newTimes,
+    };
   }
 };
 
 const Main = () => {
-  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const [state, dispatch] = useReducer(updateTimes, ["what"]);
+  useEffect(() => {
+    const fetchData = async function () {
+      return await initializeTimes();
+    };
+    fetchData();
+  }, []);
   return (
     <main>
       <Routes>
@@ -24,10 +34,7 @@ const Main = () => {
         <Route
           path="/reserve-table"
           element={
-            <ReserveTable
-              availableTimes={availableTimes}
-              dispatch={dispatch}
-            />
+            <ReserveTable availableTimes={state.availableTimes} dispatch={dispatch} />
           }
         ></Route>
       </Routes>
@@ -37,4 +44,4 @@ const Main = () => {
 
 export default Main;
 
-export {initializeTimes, updateTimes};
+export { initializeTimes, updateTimes };

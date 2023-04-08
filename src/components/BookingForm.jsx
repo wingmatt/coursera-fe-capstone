@@ -17,7 +17,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         [event.target.name]: event.target.value,
       },
     }));
-    if (event.target.name === "res-date") updateAvailableTimes(event.target.value);
+    if (event.target.id === "res-date") updateAvailableTimes(event.target.valueAsDate);
   };
   const updateAvailableTimes = (newDate) => {
     dispatch({type: "UPDATE_TIMES", payload: newDate})
@@ -38,9 +38,9 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         value={form.data.resTime}
         onChange={(event) => handleChange(event)}
       >
-        {availableTimes?.map((time) => (
+        {Array.isArray(availableTimes) ? availableTimes.map((time) => (
           <option key={time}>{time}</option>
-        ))}
+        )) : "nah"}
       </select>
       <label htmlFor="guests">Number of guests</label>
       <input
