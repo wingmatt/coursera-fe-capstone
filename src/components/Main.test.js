@@ -1,6 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import Main, {initializeTimes, updateTimes} from "./Main";
-import App from '../App';
+import  {initializeTimes, updateTimes} from "./Main";
+
 
 const expectedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 

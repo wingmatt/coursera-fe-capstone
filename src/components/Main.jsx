@@ -4,14 +4,13 @@ import Home from "../routes/Home";
 import ReserveTable from "../routes/ReserveTable";
 import { fetchAPI } from "../api/api";
 
-const initializeTimes = async () => {
-  const newTimes = await fetchAPI(new Date());
-  return newTimes;
+const initializeTimes = () => {
+  const newTimes = fetchAPI(new Date());
+  return { availableTimes: newTimes };
 };
-const updateTimes = async (state, action) => {
+const updateTimes = (state, action) => {
   if (action.type === "UPDATE_TIMES") {
-    const newTimes = await fetchAPI(action.payload);
-    console.log(newTimes)
+    const newTimes = fetchAPI(action.payload);
     return {
       ...state,
       availableTimes: newTimes,
@@ -20,13 +19,8 @@ const updateTimes = async (state, action) => {
 };
 
 const Main = () => {
-  const [state, dispatch] = useReducer(updateTimes, ["what"]);
-  useEffect(() => {
-    const fetchData = async function () {
-      return await initializeTimes();
-    };
-    fetchData();
-  }, []);
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+
   return (
     <main>
       <Routes>
@@ -34,7 +28,10 @@ const Main = () => {
         <Route
           path="/reserve-table"
           element={
-            <ReserveTable availableTimes={state.availableTimes} dispatch={dispatch} />
+            <ReserveTable
+              availableTimes={availableTimes.availableTimes}
+              dispatch={dispatch}
+            />
           }
         ></Route>
       </Routes>

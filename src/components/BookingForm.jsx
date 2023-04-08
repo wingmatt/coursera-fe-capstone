@@ -11,17 +11,15 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
     },
   });
   const handleChange = (event) => {
+    if (event.target.id === "res-date") updateAvailableTimes(event.target.valueAsDate);
     setForm((prevState) => ({
       data: {
         ...prevState.data,
         [event.target.name]: event.target.value,
       },
     }));
-    if (event.target.id === "res-date") updateAvailableTimes(event.target.valueAsDate);
   };
-  const updateAvailableTimes = (newDate) => {
-    dispatch({type: "UPDATE_TIMES", payload: newDate})
-  }
+  const updateAvailableTimes = (newDate) => dispatch({type: "UPDATE_TIMES", payload: newDate})
   return (
     <form className="booking" onSubmit={(event) => onSubmit(event, form.data)} aria-label="Make a reservation">
       <h2>Reserve a Table</h2>
@@ -57,6 +55,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         id="occasion"
         value={form.data.occasion}
         onChange={(event) => handleChange(event)}
+        name="occasion"
       >
         <option>Birthday</option>
         <option>Anniversary</option>
