@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
@@ -10,6 +11,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       occasion: undefined,
     },
   });
+  const navigate = useNavigate();
   const handleChange = (event) => {
     if (event.target.id === "res-date") updateAvailableTimes(event.target.valueAsDate);
     setForm((prevState) => ({
@@ -21,7 +23,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   };
   const updateAvailableTimes = (newDate) => dispatch({type: "UPDATE_TIMES", payload: newDate})
   return (
-    <form className="booking" onSubmit={(event) => onSubmit(event, form.data)} aria-label="Make a reservation">
+    <form className="booking" onSubmit={(event) => onSubmit(event, form.data, navigate)} aria-label="Make a reservation">
       <h2>Reserve a Table</h2>
       <label htmlFor="res-date">Choose date</label>
       <input

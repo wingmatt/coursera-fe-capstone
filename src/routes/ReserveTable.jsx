@@ -1,8 +1,10 @@
 import BookingForm from "../components/BookingForm"
+import { submitAPI } from "../api/api";
 
-const handleSubmit = (event, data) => {
+const handleSubmit = (event, data, navigate) => {
   event.preventDefault();
   console.log("Form submitted:", data);
+  if (submitAPI) navigate("/confirmed-booking")
 }
 
 const ReserveTable = ({availableTimes, dispatch}) => {

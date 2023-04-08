@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 import Home from "../routes/Home";
 import ReserveTable from "../routes/ReserveTable";
+import ConfirmedBooking from "../routes/ConfirmedBooking";
 import { fetchAPI } from "../api/api";
 
 const initializeTimes = () => {
@@ -34,6 +35,7 @@ const Main = () => {
             />
           }
         ></Route>
+        <Route path="/confirmed-booking" element={<ConfirmedBooking />}></Route>
       </Routes>
     </main>
   );
