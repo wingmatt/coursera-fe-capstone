@@ -31,6 +31,12 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         onChange={(event) => handleChange(event)}
       />
       <label htmlFor="res-time">Choose time</label>
+      <h3>Available Times:</h3>
+      <ul className="available-times">
+        {Array.isArray(availableTimes) ? availableTimes.map((time) => (
+            <li key={time}>{time}</li>
+          )) : "nah"}
+      </ul>
       <select
         id="res-time"
         value={form.data.resTime}
