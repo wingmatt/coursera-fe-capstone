@@ -5,25 +5,29 @@ import { useNavigate } from "react-router-dom";
 const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   const [form, setForm] = useState({
     data: {
-      resDate: undefined,
-      resTime: undefined,
-      guests: undefined,
-      occasion: undefined,
+      "res-date": undefined,
+      "res-time": undefined,
+      "guests": undefined,
+      "occasion": undefined,
+      "submittable": false
     },
   });
   const navigate = useNavigate();
   const handleChange = (event) => {
+    console.log(document.getElementById("booking-form").checkValidity());
+    setForm({...form.data, submittable: document.getElementById("booking-form").checkValidity()});
     if (event.target.id === "res-date") updateAvailableTimes(event.target.valueAsDate);
-    setForm((prevState) => ({
+    setForm((prevState) => (
+      {
       data: {
-        ...prevState.data,
-        [event.target.name]: event.target.value,
+        ...prevState,
+        [event.target.id]: event.target.value,
       },
     }));
   };
   const updateAvailableTimes = (newDate) => dispatch({type: "UPDATE_TIMES", payload: newDate})
   return (
-    <form className="booking" onSubmit={(event) => onSubmit(event, form.data, navigate)} aria-label="Make a reservation">
+    <form className="booking" onSubmit={(event) => onSubmit(event, form.data, navigate)} aria-label="Make a reservation" id="booking-form">
       <h2>Reserve a Table</h2>
       <label htmlFor="res-date">Choose date</label>
       <input
@@ -38,7 +42,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       <ul className="available-times">
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
             <li key={time}>{time}</li>
-          )) : "nah"}
+          )) : ""}
       </ul>
       <select
         id="res-time"
@@ -46,6 +50,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         required
         onChange={(event) => handleChange(event)}
       >
+        <option selected disabled hidden>Select a Time</option>
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
           <option key={time}>{time}</option>
         )) : "nah"}
@@ -66,12 +71,12 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         id="occasion"
         value={form.data.occasion}
         onChange={(event) => handleChange(event)}
-        name="occasion"
       >
+        <option selected disabled hidden>Select an Occasion</option>
         <option>Birthday</option>
         <option>Anniversary</option>
       </select>
-      <input type="submit" value="Make Your reservation"></input>
+      <input type="submit" value="Make Your reservation" className="button" disabled={!form.data.submittable}></input>
     </form>
   );
 };

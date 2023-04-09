@@ -258,3 +258,9 @@ input[type="submit"] {
   list-style: none;
   margin-top: 0;
 }
+
+.button:disabled {
+  background-color: var(--color-off-black);
+  color: var(--color-off-white);
+  border-color: var(--color-off-black) !important;
+}
