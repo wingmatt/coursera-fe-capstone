@@ -29,6 +29,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       <input
         type="date"
         id="res-date"
+        required
         value={form.data.resDate}
         onChange={(event) => handleChange(event)}
       />
@@ -42,6 +43,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       <select
         id="res-time"
         value={form.data.resTime}
+        required
         onChange={(event) => handleChange(event)}
       >
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
@@ -54,6 +56,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         placeholder="1"
         min="1"
         max="10"
+        required
         id="guests"
         value={form.data.guests}
         onChange={(event) => handleChange(event)}
