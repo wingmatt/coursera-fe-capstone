@@ -50,6 +50,12 @@ test('Reservation Date is valid when filled', () => {
     expect(resDateInput).toBeValid();
 })
 
+test('Reservation Time is invalid before interaction', () => {
+    render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
+    const resTime = screen.getByLabelText("Choose time");
+    expect(resTime).toBeInvalid();
+})
+
 test('Reservation Time is valid when filled', () => {
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
     const resTime = screen.getByLabelText("Choose time");
