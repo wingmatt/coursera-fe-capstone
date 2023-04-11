@@ -35,7 +35,7 @@ test('Reservation submission is disabled when form is invalid', () => {
     expect(submitButton).toBeDisabled();
 })
 
-test('Reservation Date is invalid when empty', () => {
+test('Reservation Date is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
     const resDate = screen.getByLabelText("Choose date");
     resDate.value = undefined;
@@ -50,7 +50,7 @@ test('Reservation Date is valid when filled', () => {
     expect(resDateInput).toBeValid();
 })
 
-test('Reservation Time is invalid before interaction', () => {
+test('Reservation Time is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
     const resTime = screen.getByLabelText("Choose time");
     expect(resTime).toBeInvalid();
@@ -62,10 +62,15 @@ test('Reservation Time is valid when filled', () => {
     userEvent.selectOptions(resTime, "17:00")
     expect(resTime).toBeValid();
 })
+test('Guests input is invalid before being filled', () => {
+    render(<BrowserRouter><BookingForm /></BrowserRouter>);
+    const guests = screen.getByLabelText("Number of guests");
+    expect(guests).toBeInvalid();
+})
 
 test('Guests input is valid when filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
     const guests = screen.getByLabelText("Number of guests");
-    fireEvent.change(guests, {target: {value: "2"}})
+    userEvent.type(guests, "2");
     expect(guests).toBeValid();
 })
