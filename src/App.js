@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header/>
-      <Main/>
+      <Main aria-label="On Click"/>
       <Footer/>
     </BrowserRouter>
   );
