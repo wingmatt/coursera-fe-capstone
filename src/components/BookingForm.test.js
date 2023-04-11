@@ -4,6 +4,16 @@ import BookingForm from './BookingForm';
 import {jest} from '@jest/globals';
 import { BrowserRouter } from "react-router-dom";
 
+const expectedTimes = [
+    "17:00",
+    "17:30",
+    "20:00",
+    "20:30",
+    "22:30",
+    "23:00",
+    "23:30",
+  ];
+
 test('Renders the BookingForm heading', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
     const headingElement = screen.getByText("Reserve a Table");
@@ -32,22 +42,20 @@ test('Reservation Date is invalid when empty', () => {
     expect(resDate).toBeInvalid();
 })
 test('Reservation Date is valid when filled', () => {
-    const availableTimes= jest.fn(() => {availableTimes:["17:00"]});
-    const dispatch = jest.fn(() => {availableTimes:["17:00"]})
+    const availableTimes= jest.fn(() => ["17:00"]);
+    const dispatch = jest.fn()
     render(<BrowserRouter><BookingForm availableTimes={availableTimes} dispatch={dispatch}/></BrowserRouter>);
     const resDateInput = screen.getByLabelText("Choose date");
     userEvent.type(resDateInput, "2023-04-07");
     expect(resDateInput).toBeValid();
 })
 
-/*test('Reservation Time is valid when filled', () => {
-    const availableTimes= jest.fn(() => {availableTimes:["17:00"]});
-    render(<BrowserRouter><BookingForm /></BrowserRouter>);
+test('Reservation Time is valid when filled', () => {
+    render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
     const resTime = screen.getByLabelText("Choose time");
-    fireEvent.change(resDate, {target: {value: '2020-05-24'}})
     userEvent.selectOptions(resTime, "17:00")
     expect(resTime).toBeValid();
-})*/
+})
 
 test('Guests input is valid when filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
