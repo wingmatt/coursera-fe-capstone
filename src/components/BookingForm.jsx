@@ -53,7 +53,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         <option disabled hidden>Select a Time</option>
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
           <option key={time}>{time}</option>
-        )) : "nah"}
+        )) : ""}
       </select>
       <label htmlFor="guests">Number of guests</label>
       <input
