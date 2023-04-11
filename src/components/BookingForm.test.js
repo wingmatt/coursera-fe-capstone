@@ -27,13 +27,7 @@ test('Form can be submitted', () => {
     expect(handleSubmit).toHaveBeenCalled()
 })
 
-test('Reservation submission is disabled when form is invalid', () => {
-    render(<BrowserRouter><BookingForm /></BrowserRouter>);
-    // ensure at least one required field is not set
-    screen.getByLabelText("Choose date").value = undefined;
-    const submitButton = screen.getByRole("button");
-    expect(submitButton).toBeDisabled();
-})
+
 
 test('Reservation Date is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
@@ -73,4 +67,24 @@ test('Guests input is valid when filled', () => {
     const guests = screen.getByLabelText("Number of guests");
     userEvent.type(guests, "2");
     expect(guests).toBeValid();
+})
+
+test('Reservation submission is disabled when form is invalid', () => {
+    render(<BrowserRouter><BookingForm /></BrowserRouter>);
+    const submitButton = screen.getByRole("button");
+    expect(submitButton).toBeDisabled();
+})
+
+test('Reservation submission is possible when form is valid', () => {
+    const availableTimes= jest.fn(() => ["17:00"]);
+    const dispatch = jest.fn()
+    render(<BrowserRouter><BookingForm availableTimes={expectedTimes} dispatch={dispatch}/></BrowserRouter>);
+    const resDateInput = screen.getByLabelText("Choose date");
+    const resTime = screen.getByLabelText("Choose time");
+    const guests = screen.getByLabelText("Number of guests");
+    userEvent.type(resDateInput, "2023-04-07");
+    userEvent.selectOptions(resTime, "17:00")
+    userEvent.type(guests, "2");
+    const submitButton = screen.getByRole("button");
+    expect(submitButton).not.toBeDisabled();
 })
