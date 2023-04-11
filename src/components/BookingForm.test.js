@@ -37,7 +37,6 @@ test('Reservation Date is valid when filled', () => {
     render(<BrowserRouter><BookingForm availableTimes={availableTimes} dispatch={dispatch}/></BrowserRouter>);
     const resDateInput = screen.getByLabelText("Choose date");
     userEvent.type(resDateInput, "2023-04-07");
-    userEvent.clear(resDateInput);
     expect(resDateInput).toBeValid();
 })
 
