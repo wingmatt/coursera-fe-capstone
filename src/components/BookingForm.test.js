@@ -76,7 +76,6 @@ test('Reservation submission is disabled when form is invalid', () => {
 })
 
 test('Reservation submission is possible when form is valid', () => {
-    const availableTimes= jest.fn(() => ["17:00"]);
     const dispatch = jest.fn()
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes} dispatch={dispatch}/></BrowserRouter>);
     const resDateInput = screen.getByLabelText("Choose date");
