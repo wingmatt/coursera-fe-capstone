@@ -263,4 +263,7 @@ input[type="submit"] {
   background-color: var(--color-off-black);
   color: var(--color-off-white);
   border-color: var(--color-off-black) !important;
+  opacity: .5;
+  cursor: not-allowed;
 }
+
