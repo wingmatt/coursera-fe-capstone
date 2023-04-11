@@ -50,7 +50,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         required
         onChange={(event) => handleChange(event)}
       >
-        <option disabled hidden>Select a Time</option>
+        <option disabled hidden value="">Select a Time</option>
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
           <option key={time}>{time}</option>
         )) : ""}
@@ -72,7 +72,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         value={form.data.occasion}
         onChange={(event) => handleChange(event)}
       >
-        <option disabled hidden>Select an Occasion</option>
+        <option disabled hidden value="">Select an Occasion</option>
         <option>Birthday</option>
         <option>Anniversary</option>
       </select>
