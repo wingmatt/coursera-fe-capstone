@@ -267,3 +267,11 @@ input[type="submit"] {
   cursor: not-allowed;
 }
 
+form .error {
+  font-style: italic;
+  color: tomato;
+  text-align: center;
+}
+form .invalid {
+  border-color: tomato;
+}
