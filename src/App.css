@@ -8,6 +8,12 @@
   --size-max-width: 900px;
 }
 
+body {
+  font-family: "Karla", sans-serif
+}
+h1,h2,h3,h4,h5 {
+  font-family: "Markazi Text", sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -82,6 +88,7 @@ main {
 .hero h2, .about h3 {
   grid-area: subhead;
   margin: 0;
+  font-weight: 400;
 }
 .hero p, .about p {
   grid-area: body;
@@ -231,7 +238,7 @@ footer ul li::before {
 form {
   display: flex;
   flex-flow: column;
-  gap: 8px;
+  gap: 16px;
 }
 input, select {
   padding: 16px;
@@ -251,6 +258,8 @@ input[type="submit"] {
   background-color: var(--color-highlight);
   padding: 16px;
   border-radius: 16px;
+  max-width: 14rem;
+  margin: auto;
 }
 .reserve-table {
   display: grid;
@@ -270,7 +279,9 @@ input[type="submit"] {
   opacity: .5;
   cursor: not-allowed;
 }
-
+form h2 {
+  text-align: center;
+}
 form .error {
   grid-area: error;
   justify-self:end;
