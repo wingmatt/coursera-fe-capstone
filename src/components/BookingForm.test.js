@@ -31,7 +31,7 @@ test('Form can be submitted', () => {
 
 test('Reservation Date is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
-    const resDate = screen.getByLabelText("Choose date");
+    const resDate = screen.getByLabelText("What day?");
     resDate.value = undefined;
     expect(resDate).toBeInvalid();
 })
@@ -39,20 +39,20 @@ test('Reservation Date is valid when filled', () => {
     const availableTimes= jest.fn(() => ["17:00"]);
     const dispatch = jest.fn()
     render(<BrowserRouter><BookingForm availableTimes={availableTimes} dispatch={dispatch}/></BrowserRouter>);
-    const resDateInput = screen.getByLabelText("Choose date");
+    const resDateInput = screen.getByLabelText("What day?");
     userEvent.type(resDateInput, "2023-04-07");
     expect(resDateInput).toBeValid();
 })
 
 test('Reservation Time is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
-    const resTime = screen.getByLabelText("Choose time");
+    const resTime = screen.getByLabelText("What time?");
     expect(resTime).toBeInvalid();
 })
 
 test('Reservation Time is valid when filled', () => {
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes}/></BrowserRouter>);
-    const resTime = screen.getByLabelText("Choose time");
+    const resTime = screen.getByLabelText("What time?");
     userEvent.selectOptions(resTime, "17:00")
     expect(resTime).toBeValid();
 })
@@ -78,8 +78,8 @@ test('Reservation submission is disabled when form is invalid', () => {
 test('Reservation submission is possible when form is valid', () => {
     const dispatch = jest.fn()
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes} dispatch={dispatch}/></BrowserRouter>);
-    const resDateInput = screen.getByLabelText("Choose date");
-    const resTime = screen.getByLabelText("Choose time");
+    const resDateInput = screen.getByLabelText("What day?");
+    const resTime = screen.getByLabelText("What time?");
     const guests = screen.getByLabelText("Number of guests");
     userEvent.type(resDateInput, "2023-04-07");
     userEvent.selectOptions(resTime, "17:00")
