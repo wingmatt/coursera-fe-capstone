@@ -5,9 +5,13 @@ import { useNavigate } from "react-router-dom";
 const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   const [form, setForm] = useState({
     data: {
+      name: "",
+      phone: "",
+      email: "",
       resDate: "",
       resTime: "",
       guests: "",
+      seatingPreference: "",
       occasion: "",
       submittable: false,
       errors: {}
@@ -17,7 +21,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   const handleChange = (event) => {
     console.log(document.getElementById("booking-form").checkValidity());
     setForm({...form.data, submittable: document.getElementById("booking-form").checkValidity(), errors: {
-      ...form.errors,
+      ...form.data.errors,
       [event.target.id]: !event.target.checkValidity()
     }});
     if (event.target.id === "resDate") updateAvailableTimes(event.target.valueAsDate);
@@ -32,7 +36,45 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
   const updateAvailableTimes = (newDate) => dispatch({type: "UPDATE_TIMES", payload: newDate})
   return (
     <form className="booking" onSubmit={(event) => onSubmit(event, form.data, navigate)} aria-label="Make a reservation" id="booking-form">
-      <h2>Reserve a Table</h2>
+      <h2>Contact Information</h2>
+      <div className="input-container">
+        <label htmlFor="name">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          required
+          value={form.data.name}
+          onChange={(event) => handleChange(event)}
+          className={form.data.errors.name && "invalid"}
+        />
+        {form.data.errors.name && <span className="error">Please enter your name.</span>}
+      </div>
+      <div className="input-container">
+        <label htmlFor="phone">Your Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          required
+          value={form.data.phone}
+          onChange={(event) => handleChange(event)}
+          className={form.data.errors.phone && "invalid"}
+        />
+        {form.data.errors.phone && <span className="error">Please enter your phone number.</span>}
+      </div>
+      <div className="input-container">
+        <label htmlFor="email">Your Email Address</label>
+        <input
+          type="email"
+          id="email"
+          required
+          value={form.data.email}
+          onChange={(event) => handleChange(event)}
+          className={form.data.errors.email && "invalid"}
+        />
+        {form.data.errors.email && <span className="error">Please enter your email address.</span>}
+      </div>
+
+      <h2>Reservation Information</h2>
       <div className="input-container">
         <label htmlFor="resDate">What day?</label>
         <input
@@ -68,7 +110,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       </select>
       {form.data.errors.resTime && <span className="error">Please enter your desired reservation time.</span>}
       </div><div className="input-container">
-      <label htmlFor="guests">Number of guests</label>
+      <label htmlFor="guests">How many diners?</label>
       <input
         type="number"
         placeholder="1"
@@ -93,11 +135,9 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         <option>Anniversary</option>
       </select>
       </div>
-      <input type="submit" value="Make Your reservation" className="button" disabled={!form.data.submittable}></input>
+      <input type="submit" value="Make Reservation" className="button" disabled={!form.data.submittable}></input>
     </form>
   );
 };
 
 export default BookingForm;
-
-//export {handleSubmit};
