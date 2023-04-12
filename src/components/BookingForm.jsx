@@ -44,7 +44,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
           className={form.data.errors.resDate && "invalid"}
         />
         {form.data.errors.resDate && <span className="error">Please enter your desired reservation date.</span>}
-      </div><div className="input-container">
+      </div>
       <aside><h3>Available Times:</h3>
       <ul className="available-times">
         {Array.isArray(availableTimes) ? availableTimes.map((time) => (
@@ -52,6 +52,7 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
           )) : ""}
       </ul>
       </aside>
+      <div className="input-container">
       <label htmlFor="resTime">What time?</label>
       <select
         id="resTime"

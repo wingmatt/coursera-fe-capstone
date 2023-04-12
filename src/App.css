@@ -269,6 +269,8 @@ input[type="submit"] {
 }
 
 form .error {
+  grid-area: error;
+  justify-self:end;
   font-style: italic;
   color: tomato;
   text-align: center;
@@ -278,19 +280,32 @@ form .invalid {
   border-color: tomato;
 }
 form div {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  place-items: center;
   gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "label input"
+                       "error error";
 }
 
 form aside {
   flex: 100%;
+  text-align: center;
+}
+
+form aside ul {
+  text-align: center;
+  gap: 8px;
 }
 
 form label {
-  flex: 1 1 20%;
   text-align: right;
+  grid-area: label;
+  justify-self: end;
+}
+
+form input, form select {
+  grid-area: input;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
