@@ -247,6 +247,7 @@ input, select {
   border-radius: 16px;
   font-size: 1.25rem;
   flex: 1 0 30%;
+  accent-color: var(--color-primary);
 }
 input:active, input:hover, select:active, select:hover  {
   border-color: var(--color-primary);
