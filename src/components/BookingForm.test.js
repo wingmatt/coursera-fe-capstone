@@ -16,7 +16,7 @@ const expectedTimes = [
 
 test('Renders the BookingForm heading', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
-    const headingElement = screen.getByText("Reserve a Table");
+    const headingElement = screen.getByText("Contact Information");
     expect(headingElement).toBeInTheDocument();
 })
 
@@ -58,13 +58,13 @@ test('Reservation Time is valid when filled', () => {
 })
 test('Guests input is invalid before being filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
-    const guests = screen.getByLabelText("Number of guests");
+    const guests = screen.getByLabelText("How many diners?");
     expect(guests).toBeInvalid();
 })
 
 test('Guests input is valid when filled', () => {
     render(<BrowserRouter><BookingForm /></BrowserRouter>);
-    const guests = screen.getByLabelText("Number of guests");
+    const guests = screen.getByLabelText("How many diners?");
     userEvent.type(guests, "2");
     expect(guests).toBeValid();
 })
@@ -78,9 +78,15 @@ test('Reservation submission is disabled when form is invalid', () => {
 test('Reservation submission is possible when form is valid', () => {
     const dispatch = jest.fn()
     render(<BrowserRouter><BookingForm availableTimes={expectedTimes} dispatch={dispatch}/></BrowserRouter>);
+    const nameInput = screen.getByLabelText("Your Name");
+    const phoneInput = screen.getByLabelText("Your Phone Number");
+    const emailInput = screen.getByLabelText("Your Email Address");
     const resDateInput = screen.getByLabelText("What day?");
     const resTime = screen.getByLabelText("What time?");
-    const guests = screen.getByLabelText("Number of guests");
+    const guests = screen.getByLabelText("How many diners?");
+    userEvent.type(nameInput, "Tilly");
+    userEvent.type(phoneInput, "555-555-5555");
+    userEvent.type(emailInput, "tilly@example.com");
     userEvent.type(resDateInput, "2023-04-07");
     userEvent.selectOptions(resTime, "17:00")
     userEvent.type(guests, "2");
