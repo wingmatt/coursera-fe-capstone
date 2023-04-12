@@ -33,6 +33,14 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
       },
     }));
   };
+  const handleRadio = (event) => {
+    console.log(event.target.value)
+    setForm({data: {
+      ...form.data,
+      seatingPreference: event.target.value
+    }
+    })
+  }
   const updateAvailableTimes = (newDate) => dispatch({type: "UPDATE_TIMES", payload: newDate})
   return (
     <form className="booking" onSubmit={(event) => onSubmit(event, form.data, navigate)} aria-label="Make a reservation" id="booking-form">
@@ -123,7 +131,18 @@ const BookingForm = ({availableTimes, dispatch, onSubmit}) => {
         className={form.data.errors.guests && "invalid"}
       />
       {form.data.errors.guests && <span className="error">Please enter the number of guests.</span>}
-      </div><div className="input-container">
+      </div>
+      <fieldset className="input-container radio">
+        <span><legend>Seating Preference</legend></span>
+      <div onChange={(event) => handleRadio(event)}>
+        <input type="radio" id="indoor" name="seatingPreference" value="indoor" />
+        <label for="indoor">Indoor</label>
+        <br />
+        <input type="radio" id="outdoor" name="seatingPreference" value="outdoor" />
+        <label for="outdoor">Outdoor</label>
+      </div>
+      </fieldset>
+      <div className="input-container">
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
