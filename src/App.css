@@ -241,8 +241,11 @@ input, select {
   font-size: 1.25rem;
   flex: 1 0 30%;
 }
-input:active, input:hover, select:active, select:hover {
+input:active, input:hover, select:active, select:hover  {
   border-color: var(--color-primary);
+}
+input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-primary);
 }
 input[type="submit"] {
   background-color: var(--color-highlight);
