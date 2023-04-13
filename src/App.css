@@ -152,7 +152,8 @@ main {
 }
 .card h3 {
   grid-area: title;
-  margin-bottom: 0;
+  margin: 0;
+  font-size: 1.5rem;
 }
 .card .price {
   grid-area: price;
