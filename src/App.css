@@ -195,6 +195,7 @@ main {
                         "image name"
                         "quotation quotation";
   background: var(--color-off-white);
+  border-radius: 16px;
 }
 .testimonial .rating {
   grid-area: rating;
