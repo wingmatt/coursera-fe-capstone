@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="content">
-        <img alt="Little Lemon Chicago" src="http://via.placeholder.com/100x125" />
+        <img alt="Little Lemon Chicago" src="/img/little-lemon-logo-2.png" />
         <nav>
           <section>
             <h2>Doormat Navigation</h2>

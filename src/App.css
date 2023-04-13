@@ -17,7 +17,13 @@ h1,h2,h3,h4,h5 {
 .App {
   text-align: center;
 }
+img {
+  border-radius: 16px;
+}
 
+header img, footer img {
+  border-radius: 0;
+}
 header {
   background: var(--color-off-white);
 }
@@ -231,7 +237,7 @@ footer ul li::before {
   position: relative;
   bottom: var(--about-img-offset);
   right: var(--about-img-offset);
-  padding-top: var(--about-img-offset);
+  margin-top: var(--about-img-offset);
   margin-left: calc(-1 * var(--about-img-offset));
 }
 
