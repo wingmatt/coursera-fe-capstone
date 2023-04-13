@@ -10,7 +10,7 @@ const Home = () => {
             <h2>Chicago</h2>
             <p>Alias ea quisquam provident voluptates. Quam eligendi blanditiis itaque ullam aut corporis. Labore aut consequatur.</p>
             <a href="/reserve-table" className="button cta">Reserve a Table</a>
-            <img  className="imagery" alt="Little Lemon Chicago" src="http://via.placeholder.com/300x200" />
+            <img  className="imagery" alt="Little Lemon Chicago" src="/img/restaurant chef B.jpg" width="300" height="200" />
           </div>
         </section>
         <section className="highlights">
@@ -21,13 +21,13 @@ const Home = () => {
             </a>
             <ul>
               <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
+                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="/img/greek salad.jpg" />
               </li>
               <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
+                <Card title="Bruschetta" description="Description" price="X.YY" imgUrl="/img/bruschetta.jpg" />
               </li>
               <li>
-                <Card title="Greek Salad" description="Description" price="X.YY" imgUrl="http://via.placeholder.com/350x200" />
+                <Card title="Little Lemon Cake" description="Description" price="X.YY" imgUrl="/img/lemon dessert.jpg" />
               </li>
             </ul>
           </div>
@@ -45,8 +45,8 @@ const Home = () => {
             <h3>Chicago</h3>
             <p>Alias ea quisquam provident voluptates. Quam eligendi blanditiis itaque ullam aut corporis. Labore aut consequatur. Alias ea quisquam provident voluptates. Quam eligendi blanditiis itaque ullam aut corporis. Labore aut consequatur.</p>
             <aside className="imagery">
-              <img alt="Little Lemon Chicago" src="http://via.placeholder.com/200x300" />
-              <img alt="Little Lemon Chicago" src="http://via.placeholder.com/200x300" />
+              <img alt="Little Lemon Chicago" src="/img/restaurantfood.jpg" width="200" height="300"/>
+              <img alt="Little Lemon Chicago" src="/img/Mario and Adrian A.jpg" width="200" height="300"/>
             </aside>
           </div>
         </section>
